@@ -1,15 +1,21 @@
-NAME = PushSwap
+NAME = push_swap
 
 # Directories
-SRC_DIR = ./srcs
-INC_DIR = ./includes
-OBJ_DIR = ./objs
-LIB_DIR = ./lib
+SRC_DIR		= ./src
+INC_DIR		= ./include
+BUILD_DIR	= ./build
+OBJ_DIR		= $(BUILD_DIR)/obj
+LIB_DIR		= ./lib
 
 # File sources to compile
-MY_SOURCES =	ft_stack_1.c \
-				ft_stack_2.c \
-				push_swap.c 
+MY_SOURCES =	main.c \
+				init_data.c \
+				parse_input.c \
+				dispatch_strategy.c \
+				utils.c \
+				stack/stack_1.c \
+				stack/stack_2.c \
+				stack/stack_3.c
 
 # Add directory prefix to the sources and objects
 SRCS	= $(addprefix $(SRC_DIR)/, $(MY_SOURCES))
@@ -24,13 +30,13 @@ all: $(NAME)
 #Create the library
 $(NAME): $(OBJS)
 		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-	
+
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
-		@mkdir -p $(OBJ_DIR)
+		@mkdir -p $(dir $@)
 		$(CC) $(CFLAGS) -fPIC -c $< -o $@
 
 clean:
-		rm -rf $(OBJ_DIR)
+		rm -rf $(BUILD_DIR)
 
 fclean: clean
 		rm -f $(NAME)

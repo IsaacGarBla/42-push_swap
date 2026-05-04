@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_2.c                                       :+:      :+:    :+:   */
+/*   stack_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igarcia- <igarcia-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: didaguil <didaguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:50:19 by igarcia-          #+#    #+#             */
-/*   Updated: 2026/05/01 10:40:09 by igarcia-         ###   ########.fr       */
+/*   Updated: 2026/05/04 15:15:17 by didaguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stack.h"
-#include <stdlib.h>
+#include "stack.h"
 
-void	ft_stack_swap(t_stack *stack)
+void	stack_swap(t_stack *stack)
 {
 	t_stack_node	*tmp;
 
@@ -32,7 +31,7 @@ void	ft_stack_swap(t_stack *stack)
 	}
 }
 
-void	ft_stack_push(t_stack *stack_src, t_stack *stack_dst)
+void	stack_push(t_stack *stack_src, t_stack *stack_dst)
 {
 	t_stack_node	*tmp;
 
@@ -50,10 +49,10 @@ void	ft_stack_push(t_stack *stack_src, t_stack *stack_dst)
 		stack_src->last = NULL;
 	}
 	stack_src->len--;
-	ft_stack_add_first(stack_dst, tmp);
+	stack_add_first(stack_dst, tmp);
 }
 
-void	ft_stack_rotate_up(t_stack *stack)
+void	stack_rotate_up(t_stack *stack)
 {
 	t_stack_node	*tmp;
 
@@ -68,7 +67,7 @@ void	ft_stack_rotate_up(t_stack *stack)
 	stack->last = tmp;
 }
 
-void	ft_stack_rotate_down(t_stack *stack)
+void	stack_rotate_down(t_stack *stack)
 {
 	t_stack_node	*tmp;
 
@@ -83,7 +82,7 @@ void	ft_stack_rotate_down(t_stack *stack)
 	stack->first->next->prev = stack->first;
 }
 
-float	ft_stack_compute_disorder(t_stack *stack)
+float	stack_compute_disorder(t_stack *stack)
 {
 	long			mistakes;
 	long			total_pairs;

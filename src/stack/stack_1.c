@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_1.c                                       :+:      :+:    :+:   */
+/*   stack_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igarcia- <igarcia-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: didaguil <didaguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:50:19 by igarcia-          #+#    #+#             */
-/*   Updated: 2026/05/01 10:14:56 by igarcia-         ###   ########.fr       */
+/*   Updated: 2026/05/04 15:15:13 by didaguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_stack.h"
-#include <stdlib.h>
+#include "stack.h"
 
-t_stack_node	*ft_stack_node_create(int value)
+t_stack_node	*stack_node_create(int value)
 {
 	t_stack_node	*new;
 
@@ -27,7 +26,7 @@ t_stack_node	*ft_stack_node_create(int value)
 	return (new);
 }
 
-t_stack	*ft_stack_create(void)
+t_stack	*stack_create(void)
 {
 	t_stack	*stack;
 
@@ -41,10 +40,12 @@ t_stack	*ft_stack_create(void)
 	return (stack);
 }
 
-void	ft_stack_destroy(t_stack *stack)
+void	stack_destroy(t_stack *stack)
 {
 	t_stack_node	*node;
 
+	if (stack == NULL)
+		return ;
 	while (stack->len > 0)
 	{
 		node = stack->first;
@@ -55,7 +56,7 @@ void	ft_stack_destroy(t_stack *stack)
 	free(stack);
 }
 
-void	ft_stack_add_first(t_stack *stack, t_stack_node *node)
+void	stack_add_first(t_stack *stack, t_stack_node *node)
 {
 	node->next = stack->first;
 	node->prev = NULL;
@@ -68,7 +69,7 @@ void	ft_stack_add_first(t_stack *stack, t_stack_node *node)
 	return ;
 }
 
-void	ft_stack_add_last(t_stack *stack, t_stack_node *node)
+void	stack_add_last(t_stack *stack, t_stack_node *node)
 {
 	node->next = NULL;
 	node->prev = stack->last;

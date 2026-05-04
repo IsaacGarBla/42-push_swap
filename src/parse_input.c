@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_in.h                                      :+:      :+:    :+:   */
+/*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igarcia- <igarcia-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: didaguil <didaguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/29 11:50:29 by igarcia-          #+#    #+#             */
-/*   Updated: 2026/05/03 23:49:11 by igarcia-         ###   ########.fr       */
+/*   Created: 2026/05/01 10:24:02 by igarcia-          #+#    #+#             */
+/*   Updated: 2026/05/04 14:58:42 by didaguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PARSE_IN_H
-# define FT_PARSE_IN_H
+#include "parse_input.h"
 
-#include "ft_stack.h"
-#include "push_swap.h"
+int	parse_input(t_data *ps, int argc, char **argv)
+{
+	(void) ps;
+	(void) argc;
+	(void) argv;
+	return (OK);
+}
 
-
-#endif 

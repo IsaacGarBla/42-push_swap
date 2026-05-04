@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: igarcia- <igarcia-@student.42barcelona.    +#+  +:+       +#+        */
+/*   By: didaguil <didaguil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:50:29 by igarcia-          #+#    #+#             */
-/*   Updated: 2026/05/03 23:49:11 by igarcia-         ###   ########.fr       */
+/*   Updated: 2026/05/04 14:36:59 by didaguil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#ifndef DATA_H
+# define DATA_H
 
-#include "ft_stack.h"
-
-# define	STG_SIMPLE		1
-# define	STG_MEDIUM		2
-# define	STG_COMPLEX		3
-# define	STG_ADAPTATIVE	4
+#include "stack.h"
+#include <stdbool.h>
 
 # define	STR_STG_SIMPLE		"--simple"
 # define	STR_STG_MEDIUM		"--medium"
@@ -26,12 +22,28 @@
 # define	STR_STG_ADAPTATIVE	"--adaptative"
 # define	STR_BENCHMARK		"--bench"
 
-
-typedef struct s_push_swap
+typedef enum e_strategy
 {
-	int		bench;
-	int		strategy;
-	t_stack	*stack;
-}	t_push_swap;
+	STG_NONE = 0,
+	STG_SIMPLE = 1,
+	STG_MEDIUM = 2,
+	STG_COMPLEX = 3,
+	STG_ADAPTATIVE = 4
+}	t_strategy;
 
-#endif 
+typedef enum e_status
+{
+	OK = 0,
+	ERROR = 1
+}	t_status;
+
+typedef struct s_data
+{
+	bool		bench;
+	float		disorder;
+	t_strategy	strategy;
+	t_stack		*stack_a;
+	t_stack		*stack_b;
+}	t_data;
+
+#endif /* DATA_H */
