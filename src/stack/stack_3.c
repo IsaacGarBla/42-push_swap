@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   stack_3.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: didaguil <didaguil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igarcia- <igarcia-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 15:15:53 by didaguil          #+#    #+#             */
-/*   Updated: 2026/05/04 15:24:52 by didaguil         ###   ########.fr       */
+/*   Updated: 2026/05/04 17:49:05 by igarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-int	ft_stack_locate(t_stack *stack, int value)
+int	stack_locate(t_stack *stack, int value)
 {
 	int				pos;
 	t_stack_node	*curr;
@@ -26,10 +26,10 @@ int	ft_stack_locate(t_stack *stack, int value)
 		curr = curr->next;
 		pos++;
 	}
-	return (0);
+	return (-1);
 }
 
-int ft_stack_locate_next(t_stack *stack, int value)
+int stack_locate_next(t_stack *stack, int value)
 {
 	int				curr_pos;
 	int				pos;
@@ -53,4 +53,25 @@ int ft_stack_locate_next(t_stack *stack, int value)
 		curr_pos++;
 	}
 	return (pos);
+}
+bool stack_add_value_first(t_stack *stack, int value)
+{
+	t_stack_node	*node;
+
+	node = stack_node_create(value);
+	if (!node)
+		return (false);
+	stack_add_first(stack, node);
+	return (true);
+}
+
+bool stack_add_value_last(t_stack *stack, int value)
+{
+	t_stack_node	*node;
+
+	node = stack_node_create(value);
+	if (!node)
+		return (false);
+	stack_add_last(stack, node);
+	return (true);
 }

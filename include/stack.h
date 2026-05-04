@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: didaguil <didaguil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igarcia- <igarcia-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:50:29 by igarcia-          #+#    #+#             */
-/*   Updated: 2026/05/04 15:25:59 by didaguil         ###   ########.fr       */
+/*   Updated: 2026/05/04 17:36:37 by igarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STACK_H
 
 #include <stdlib.h>
+#include <stdbool.h>
 
 typedef struct s_stack_node
 {
@@ -39,7 +40,9 @@ void			stack_push(t_stack *stack_src, t_stack *stack_dst);
 void			stack_rotate_up(t_stack *stack);
 void			stack_rotate_down(t_stack *stack);
 float			stack_compute_disorder(t_stack *stack);
-int				ft_stack_locate(t_stack *stack, int value);
-int				ft_stack_locate_next(t_stack *stack, int value);
+int				stack_locate(t_stack *stack, int value);
+int				stack_locate_next(t_stack *stack, int value);
+bool			stack_add_value_first(t_stack *stack, int value);
+bool			stack_add_value_last(t_stack *stack, int value);
 
 #endif /* STACK_H */

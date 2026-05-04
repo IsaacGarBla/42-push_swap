@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: didaguil <didaguil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igarcia- <igarcia-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 10:24:02 by igarcia-          #+#    #+#             */
-/*   Updated: 2026/05/04 15:08:57 by didaguil         ###   ########.fr       */
+/*   Updated: 2026/05/04 19:34:23 by igarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,24 @@
 int	main(int argc, char **argv)
 {
 	t_data	ps;
+	t_status status;
 
 	if (argc < 2)
-		error_exit();
-	if (init_data(&ps) != OK)
-		error_exit();
-	if (parse_input(&ps, argc, argv) != OK)
-		error_exit();
-	if (dispatch_strategy(&ps) != OK)
-		error_exit();
+		return (OK);
+	status = init_data(&ps);
+	if (status == OK)
+	{
+		status = parse_input(&ps, argc, argv);
+		if (status == OK)
+			status = dispatch_strategy(&ps);
+	}
+	if (status != OK)
+	{
+		free_data(&ps);
+		error_exit(status);
+	}
+	ft_printf("Imprimir pilas.\n");
+	print_stacks(&ps);
 	free_data(&ps);
 	return (OK);
 }

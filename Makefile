@@ -24,12 +24,15 @@ OBJS	= $(addprefix $(OBJ_DIR)/, $(MY_SOURCES:.c=.o))
 #Compiler and flags
 CC		= cc
 CFLAGS	= -Wall -Werror -Wextra -I$(INC_DIR)
+LDFLAGS     = -L$(LIB_DIR)
+LDLIBS      = -lftprintf
+
 
 all: $(NAME)
 
-#Create the library
+#Create the files and directories needed to compile the program
 $(NAME): $(OBJS)
-		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+		$(CC) $(CFLAGS) $(OBJS) $(LDFLAGS) $(LDLIBS) -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		@mkdir -p $(dir $@)

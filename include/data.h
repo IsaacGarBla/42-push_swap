@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   data.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: didaguil <didaguil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igarcia- <igarcia-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:50:29 by igarcia-          #+#    #+#             */
-/*   Updated: 2026/05/04 14:36:59 by didaguil         ###   ########.fr       */
+/*   Updated: 2026/05/04 19:44:39 by igarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # define	STR_STG_SIMPLE		"--simple"
 # define	STR_STG_MEDIUM		"--medium"
 # define	STR_STG_COMPLEX		"--complex"
-# define	STR_STG_ADAPTATIVE	"--adaptative"
+# define	STR_STG_ADAPTIVE	"--adaptive"
 # define	STR_BENCHMARK		"--bench"
 
 typedef enum e_strategy
@@ -28,13 +28,20 @@ typedef enum e_strategy
 	STG_SIMPLE = 1,
 	STG_MEDIUM = 2,
 	STG_COMPLEX = 3,
-	STG_ADAPTATIVE = 4
+	STG_ADAPTIVE = 4
 }	t_strategy;
 
 typedef enum e_status
 {
 	OK = 0,
-	ERROR = 1
+	NO_STRATEGY = 1,
+	NO_BENCHMARK = 2,
+	DUPLICATE_NUMBER = 3,
+	UNRECOGNIZED_ARGUMENT  = 4,
+	DUPLICATE_STRATEGY = 5,
+	DUBLICATE_BENCHMARK = 6,
+	STACK_EMPTY = 7,
+	MEMORY_ERROR = 8
 }	t_status;
 
 typedef struct s_data

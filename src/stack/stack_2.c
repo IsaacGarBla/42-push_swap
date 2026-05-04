@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: didaguil <didaguil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igarcia- <igarcia-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/29 11:50:19 by igarcia-          #+#    #+#             */
-/*   Updated: 2026/05/04 15:15:17 by didaguil         ###   ########.fr       */
+/*   Updated: 2026/05/04 18:36:41 by igarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ float	stack_compute_disorder(t_stack *stack)
 
 	mistakes = 0;
 	total_pairs = 0;
+	if (stack->len < 2)
+		return (0);
 	node1 = stack->first;
 	while (node1 != NULL)
 	{

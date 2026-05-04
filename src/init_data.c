@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: didaguil <didaguil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: igarcia- <igarcia-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 14:52:02 by didaguil          #+#    #+#             */
-/*   Updated: 2026/05/04 14:52:38 by didaguil         ###   ########.fr       */
+/*   Updated: 2026/05/04 19:44:09 by igarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ t_status	init_data(t_data *ps)
 	ps->strategy = STG_NONE;
 	ps->stack_a = stack_create();
 	if (ps->stack_a == NULL)
-		return (ERROR);
+		return (MEMORY_ERROR);
 	ps->stack_b = stack_create();
 	if (ps->stack_b == NULL)
 	{
 		stack_destroy(ps->stack_a);
-		return (ERROR);
+		return (MEMORY_ERROR);
 	}
 	return (OK);
 }
