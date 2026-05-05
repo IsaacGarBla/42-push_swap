@@ -6,18 +6,30 @@
 /*   By: igarcia- <igarcia-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 10:24:02 by igarcia-          #+#    #+#             */
-/*   Updated: 2026/05/05 16:54:30 by igarcia-         ###   ########.fr       */
+/*   Updated: 2026/05/06 01:27:01 by igarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse_input.h"
 
-static t_status parse_numbers(t_data *ps, char *str)
+static bool	add_number(t_stack *stack, int value)
 {
-	char 			**numbers;
-	int 			i = 0;
-	int 			value;
-	t_status		status;
+	t_stack_node	*node;
+
+	node = stack_node_create(value);
+	if (node == NULL)
+		return (false);
+	else
+		stack_push(stack, node);
+	return (true);
+}
+
+static t_status	parse_numbers(t_data *ps, char *str)
+{
+	char		**numbers;
+	int			i;
+	int			value;
+	t_status	status;
 
 	i = 0;
 	status = OK;
@@ -28,16 +40,17 @@ static t_status parse_numbers(t_data *ps, char *str)
 			status = UNRECOGNIZED_ARGUMENT;
 		else if (stack_locate(ps->stack_a, value) != -1)
 			status = DUPLICATE_NUMBER;
-		else if (!stack_add_value_first(ps->stack_a, value))
+		else if (!add_number(ps->stack_a, value))
 			status = MEMORY_ERROR;
 		i++;
 	}
 	free_split(numbers);
 	return (status);
 }
-static t_status parse_strategy(t_data *ps, char *str)
+
+static t_status	parse_strategy(t_data *ps, char *str)
 {
-	t_strategy strategy;
+	t_strategy	strategy;
 
 	strategy = STG_NONE;
 	if (ft_strcmp(str, STR_STG_SIMPLE) == 0)
@@ -57,9 +70,9 @@ static t_status parse_strategy(t_data *ps, char *str)
 	}
 	return (NO_STRATEGY);
 }
-static t_status parse_benchmark(t_data *ps, char *str)
-{
 
+static t_status	parse_benchmark(t_data *ps, char *str)
+{
 	if (ft_strcmp(str, STR_BENCHMARK) == 0)
 	{
 		if (ps->bench == true)
@@ -91,5 +104,6 @@ int	parse_input(t_data *ps, int argc, char **argv)
 		i++;
 	}
 	ps->disorder = stack_compute_disorder(ps->stack_a);
-	return (status && ps->stack_a->len > 0) + STACK_EMPTY * (ps->stack_a->len == 0);
+	return ((status && ps->stack_a->len > 0)
+		+ STACK_EMPTY * (ps->stack_a->len == 0));
 }

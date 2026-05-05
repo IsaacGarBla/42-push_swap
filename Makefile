@@ -15,7 +15,8 @@ MY_SOURCES =	main.c \
 				utils.c \
 				stack/stack_1.c \
 				stack/stack_2.c \
-				stack/stack_3.c
+				stack/stack_3.c \
+				on2_insertion.c
 
 # Add directory prefix to the sources and objects
 SRCS	= $(addprefix $(SRC_DIR)/, $(MY_SOURCES))
