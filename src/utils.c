@@ -6,11 +6,44 @@
 /*   By: igarcia- <igarcia-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/04 14:10:25 by didaguil          #+#    #+#             */
-/*   Updated: 2026/05/04 19:36:13 by igarcia-         ###   ########.fr       */
+/*   Updated: 2026/05/05 16:56:41 by igarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+
+static bool	is_separator(char c, char *charset)
+{
+	int	i;
+
+	i = 0;
+	while (charset[i])
+	{
+		if (c == charset[i])
+			return (true);
+		i++;
+	}
+	return (false);
+}
+
+static int	count_words(char *str, char *charset)
+{
+	int	count;
+	int	i;
+
+	count = 0;
+	i = 0;
+	while (str[i])
+	{
+		while (str[i] && is_separator(str[i], charset))
+			i++;
+		if (str[i])
+			count++;
+		while (str[i] && !is_separator(str[i], charset))
+			i++;
+	}
+	return (count);
+}
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
@@ -89,39 +122,6 @@ char	**ft_split_full(char *str, char *charset)
 	}
 	res[j] = NULL;
 	return (res);
-}
-
-int	count_words(char *str, char *charset)
-{
-	int	count;
-	int	i;
-
-	count = 0;
-	i = 0;
-	while (str[i])
-	{
-		while (str[i] && is_separator(str[i], charset))
-			i++;
-		if (str[i])
-			count++;
-		while (str[i] && !is_separator(str[i], charset))
-			i++;
-	}
-	return (count);
-}
-
-bool	is_separator(char c, char *charset)
-{
-	int	i;
-
-	i = 0;
-	while (charset[i])
-	{
-		if (c == charset[i])
-			return (true);
-		i++;
-	}
-	return (false);
 }
 
 char	*ft_strndup(char *s, int n)

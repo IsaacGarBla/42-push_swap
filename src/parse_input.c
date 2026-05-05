@@ -6,13 +6,13 @@
 /*   By: igarcia- <igarcia-@student.42barcelona.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/01 10:24:02 by igarcia-          #+#    #+#             */
-/*   Updated: 2026/05/04 19:40:52 by igarcia-         ###   ########.fr       */
+/*   Updated: 2026/05/05 16:54:30 by igarcia-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parse_input.h"
 
-t_status parse_numbers(t_data *ps, char *str)
+static t_status parse_numbers(t_data *ps, char *str)
 {
 	char 			**numbers;
 	int 			i = 0;
@@ -35,7 +35,7 @@ t_status parse_numbers(t_data *ps, char *str)
 	free_split(numbers);
 	return (status);
 }
-t_status parse_strategy(t_data *ps, char *str)
+static t_status parse_strategy(t_data *ps, char *str)
 {
 	t_strategy strategy;
 
@@ -57,7 +57,7 @@ t_status parse_strategy(t_data *ps, char *str)
 	}
 	return (NO_STRATEGY);
 }
-t_status parse_benchmark(t_data *ps, char *str)
+static t_status parse_benchmark(t_data *ps, char *str)
 {
 
 	if (ft_strcmp(str, STR_BENCHMARK) == 0)
